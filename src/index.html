@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
   <head>
     <title>Dog-On Cute!</title>
     <meta charset="utf-8">
@@ -8,7 +9,9 @@
     <!-- Load Bootstrap's CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
+
   <body>
+
     <!-- Navbar Across the Top -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <span class="navbar-brand mb-0 h1">Dog-On Cute!</span>
@@ -23,6 +26,7 @@
             We need to build menu items for all dog breeds that look like this:
 
             <a id="breed-name" class="dropdown-item" href="#">Breed Name</a>
+            ...
           -->
         </div>
       </div>
@@ -35,6 +39,8 @@
 
       <!-- Our grid of dog images -->
       <div id="breed-grid">
+
+        <!-- Example of a Row, Col, Img in our grid -->
         <div class="row mt-2">
           <div class="col">
             <!--
@@ -47,6 +53,7 @@
             >
           </div>
         </div>
+
       </div>
     </div>
 
@@ -54,6 +61,34 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Help Functions -->
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script>
+      function start() {
+        // 1. Get all the dog breeds
+        getDogBreeds(function(breedList) {
+          // 2. Use the breed list to create a drop down
+          populateBreedDropdown(breedList);
+
+          // 3. Listen for clicks on the dropdown menu items
+          let dropdownMenu = document.querySelector('#dropdown-menu');
+          dropdownMenu.addEventListener('click', function(event) {
+            let dropdownItem = event.target;
+            let breed = dropdownItem.id;
+
+            // 4. Get the list of images for this breed from the Dog API
+            getBreedData(breed, function(images) {
+              // 5. Update our web page with the breed title and create images
+              showBreed(breed, images);
+            });
+          });
+        });
+      }
+
+      window.onload = start;      
+    </script>
 
   </body>
 </html>

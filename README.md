@@ -40,7 +40,7 @@ You can now open your web browser to `http://127.0.0.1:8080`.
 
 ## Step 3: Developing the Code
 
-A complete [walkthrough of the code is available on YouTube](https://www.youtube.com/watch?v=XjCaS2eXpkQ&list=PLJgO3yLojCBMeqeGhwE9Flrl49Z8wObpF&index=2&t=0s).
+A complete [walkthrough of the code is available on YouTube](https://youtu.be/mtl23RalqLY).
 
 Try following along with the walkthrough, and building the code yourself to practice.
 
